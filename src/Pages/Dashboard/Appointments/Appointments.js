@@ -16,7 +16,7 @@ const Appointments = ({ date }) => {
 	const [appointments, setAppointments] = useState([]);
 
 	useEffect(() => {
-		const url = `https://whispering-forest-63163.herokuapp.com/appointments?email=${user.email}&date=${date}`;
+		const url = `https://whispering-forest-63163.herokuapp.com/appointments?email=${user.email}&date=${date.toLocaleDateString()}`;
 		fetch(url, {
 			headers: {
 				'authorization': `Bearer ${token}`,
