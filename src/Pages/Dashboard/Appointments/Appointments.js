@@ -9,6 +9,7 @@ import {
 	Typography,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const Appointments = ({ date }) => {
@@ -39,6 +40,7 @@ const Appointments = ({ date }) => {
 							<TableCell align="left">Name</TableCell>
 							<TableCell align="left">Time</TableCell>
 							<TableCell align="left">Service</TableCell>
+							<TableCell align="left">Price</TableCell>
 							<TableCell align="left">Action</TableCell>
 						</TableRow>
 					</TableHead>
@@ -53,7 +55,16 @@ const Appointments = ({ date }) => {
 								</TableCell>
 								<TableCell align="left">{row.time}</TableCell>
 								<TableCell align="left">{row.serviceName}</TableCell>
-								<TableCell align="left">{row.phone}</TableCell>
+								<TableCell align="left">{row.price}</TableCell>
+								<TableCell align="left">
+									{row.payment ? (
+										'Paid'
+									) : (
+										<Link to={`/dashboard/payment/${row._id}`}>
+											<button>Pay</button>
+										</Link>
+									)}
+								</TableCell>
 							</TableRow>
 						))}
 					</TableBody>
